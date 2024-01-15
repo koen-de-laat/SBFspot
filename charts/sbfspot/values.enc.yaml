@@ -1,0 +1,31 @@
+mysql:
+    auth:
+        rootPassword: ENC[AES256_GCM,data:Nr0njK3hQ6Lh8VhKIiVzk632ArA0,iv:hkCTSPc9XA9KZQcKI4mUj3vV7x/x6siYb9cRH8+B7ME=,tag:ssnBKhekTzUMsjCnaRACgg==,type:str]
+collector:
+    ipAdresses:
+        - ENC[AES256_GCM,data:JjR4fNyxP5HmFHLz/wI=,iv:t/l8B4ijHscqYhOaBpe7/bS+LSQhHDkuV5KudKs9mBI=,tag:xY9hHXIoZAdh/jU0ALrqDQ==,type:str]
+        - ENC[AES256_GCM,data:8UXfWTjKUg1nKzAvQAE=,iv:Xu8GRbvsUEbAVD/tKzuZAPL50M30HQ/c7CHzbGNtyBk=,tag:fpGxpCqlb6ziTHY6ccuf6g==,type:str]
+    password: ENC[AES256_GCM,data:ClP0Vw==,iv:ASkP/zhVKRZ9KDU7qodCgUk1jfEresamSjgkq0HkPGw=,tag:plldy1G0+fwIvqYntQIVMQ==,type:str]
+    latitude: ENC[AES256_GCM,data:8+WqjKHH,iv:8shc9T0JTkyeu2UVprp5ryz2Az2Yh63iVnkr5q6urRk=,tag:Toa6Sbglp8tIrReIlm52tA==,type:str]
+    longitude: ENC[AES256_GCM,data:5k4YwDE=,iv:48+1xoLGtpJK0CVA4maFsd/tPm4BXeOZBgflWZ2XSX0=,tag:cwwEmf3Gm1r40TV3HqGkUw==,type:str]
+uploader:
+    pvoutput:
+        serialMapping:
+            "3002967671": ENC[AES256_GCM,data:frYH7Gk=,iv:+vEdNoXgpdvhZVlcIIkbYgYlXpHR+4coBGwBww0An2Y=,tag:czCZcwe70OoSn6Ev4jccPw==,type:str]
+            "1992088839": ENC[AES256_GCM,data:VImVhZE=,iv:tHDxCskXb/8mzrwOhdHNr9nMoUNCjZmu2QM1Bz3zXvI=,tag:2gX0V4WzI1EYTQVmIVGhaA==,type:str]
+        apiKey: ENC[AES256_GCM,data:pdXofp5EGvgZgPlLmJUosWMHBeNBPulfh9AsuYtU3FeAptz49fRmPA==,iv:e6Rux0ri/m2QXDxRa0C1zhEBxgibbXhaAJ/iFZhKJco=,tag:LnpAKHXvzrka64n6RUw+aA==,type:str]
+sops:
+    kms:
+        - arn: arn:aws:kms:eu-west-1:306752674640:alias/sops
+          created_at: "2024-01-15T22:04:00Z"
+          enc: AQICAHhkO3xoqympV9vRgRfrvPMnC1zNHQHkfwqPxwJnOBPkigEHE9h8ydee3+Zk/c+gwZ6AAAAAfjB8BgkqhkiG9w0BBwagbzBtAgEAMGgGCSqGSIb3DQEHATAeBglghkgBZQMEAS4wEQQMfB0W/6IHU057i+CaAgEQgDvZ/wYUFdGHp7mjy9UKHuVWru9WJ7AX80hQ8MKU7KihatLc9ulD9ZO1rlLfOHvk5I5gtDj7D8339yU1Uw==
+          aws_profile: ""
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age: []
+    lastmodified: "2024-01-15T22:04:00Z"
+    mac: ENC[AES256_GCM,data:iZ9D5VHfSXg9p4GwhmmIgDomhpA/+MMOgpMf2QP+f9k07OzbTXSg56QLkkQdB+jMqaSV68idlUFeg7n8Ya/buR4i3f4uz24v6I1gIZjDROSpy3trPXYSts6MOUx2A8xSSSO5Thva49BYTtGgHA9Og3lEzkoDXqG1M0RFYmo/W0E=,iv:gTJpJRHa4sRGYa5cPgkzs4FtdZRoGmnCI9m6zt/tz1Y=,tag:kjyHHhVyVwXzv61OsJI7+Q==,type:str]
+    pgp: []
+    unencrypted_suffix: _unencrypted
+    version: 3.7.3

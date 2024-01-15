@@ -44,7 +44,7 @@ mysql:
   enabled: true
   auth:
     createDatabase: false
-    rootPassword: MySuperSecretPassword
+    rootPassword: MyPassword
 
 timezone: Europe/Amsterdam
 
@@ -53,16 +53,15 @@ collector:
   interval: 300
   finq: false
   ipAdresses:
-    - 192.168.10.193
-#    - 192.168.10.163
-  password: "1234"
-  plantName: Berkelseweg
+    - 192.168.1.100
+  password: "0000"
+  plantName: MySolarPlant
+  latitude: ""
+  longitude: ""
   customDB: {}
 uploader:
   enabled: true
   pvoutput:
-    serialMapping:
-      200212345: "4321"
-      200543558: "89961"
+    serialMapping: {}
 #      SerialNmbrInverter_1: PVoutput_System_ID_1
     apiKey: "myApiKey"

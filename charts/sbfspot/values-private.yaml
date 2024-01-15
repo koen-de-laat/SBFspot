@@ -1,0 +1,10 @@
+mysql:
+  enabled: true
+
+timezone: Europe/Amsterdam
+
+collector:
+  finq: false
+  plantName: Berkelseweg
+uploader:
+  enabled: true
