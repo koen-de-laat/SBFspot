@@ -1,0 +1,68 @@
+replicaCount: 1
+
+image:
+  repository: sbfspot/sbfspot
+  pullPolicy: Always
+  # Overrides the image tag whose default is the chart appVersion.
+  tag: ""
+
+imagePullSecrets: []
+nameOverride: ""
+fullnameOverride: ""
+
+serviceAccount:
+  # Specifies whether a service account should be created
+  create: true
+  # Annotations to add to the service account
+  annotations: {}
+  # The name of the service account to use.
+  # If not set and create is true, a name is generated using the fullname template
+  name: ""
+
+podAnnotations: {}
+
+podSecurityContext:
+  fsGroup: 5000
+  runAsNonRoot: true
+  runAsUser: 5000
+  runAsGroup: 5000
+
+securityContext:
+  capabilities:
+   drop:
+   - ALL
+
+resources: {}
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
+
+mysql:
+  enabled: true
+  auth:
+    createDatabase: false
+    rootPassword: MySuperSecretPassword
+
+timezone: Europe/Amsterdam
+
+collector:
+  enabled: true
+  interval: 300
+  finq: false
+  ipAdresses:
+    - 192.168.10.193
+#    - 192.168.10.163
+  password: "1234"
+  plantName: Berkelseweg
+  customDB: {}
+uploader:
+  enabled: true
+  pvoutput:
+    serialMapping:
+      200212345: "4321"
+      200543558: "89961"
+#      SerialNmbrInverter_1: PVoutput_System_ID_1
+    apiKey: "myApiKey"
