@@ -45,6 +45,10 @@ mysql:
   auth:
     createDatabase: false
     rootPassword: MyPassword
+  primary:
+    extraEnvVars:
+      - name: TZ
+        value: Europe/Amsterdam
 
 timezone: Europe/Amsterdam
 
