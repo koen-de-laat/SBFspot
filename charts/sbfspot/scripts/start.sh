@@ -332,12 +332,21 @@ if [ -n "$sbfspotbinary" ]; then
       echo "SBFSPOT_INTERVAL is very short. It will be set to 60 seconds."
   fi
 
+  SBFSPOT_INTERVAL_MINUTES=$((SBFSPOT_INTERVAL / 60))
+  SBFSPOT_INTERVAL_OFFSET_MINUTES=1
+  SBFSPOT_INTERVAL_WAIT_MINUTES=$(((SBFSPOT_INTERVAL_MINUTES + SBFSPOT_INTERVAL_OFFSET_MINUTES - $(date +%M)) % SBFSPOT_INTERVAL_MINUTES))
+
+  if [ $SBFSPOT_INTERVAL_WAIT_MINUTES -gt 0 ]; then
+    echo "waiting for $SBFSPOT_INTERVAL_WAIT_MINUTES minutes"
+    sleep $((SBFSPOT_INTERVAL_WAIT_MINUTES * 60))
+  fi
+
   while true; do
       timeout --foreground 180 $homedir/$sbfspotbinary $sbfspot_options -cfg$confdir/SBFspot.cfg
 
       # if QUIET SBFspot Option is set, produce less output
       if echo $sbfspot_options | grep -q "\-q"; then
-          DELTA=$((60 - SBFSPOT_INTERVAL / 60))
+          DELTA=$((60 - SBFSPOT_INTERVAL_MINUTES))
           if [ $(date +%H) -eq 23 ] && [ $(date +%M) -ge $DELTA ];then   # last entry of a day
               if [ $(date +%u) -eq 7 ];then   # sunday
                   echo -n "week "
