@@ -1,10 +1,26 @@
 mysql:
   enabled: true
+  primary:
+    resources:
+      requests:
+        cpu: 100m
+        memory: 512Mi
+      limits:
+        cpu: 100m
+        memory: 1024Mi
 
 timezone: Europe/Amsterdam
 
 collector:
   finq: false
   plantName: Berkelseweg
+  resources:
+    requests:
+      cpu: 5m
+      memory: 32Mi
 uploader:
   enabled: true
+  resources:
+    requests:
+      cpu: 5m
+      memory: 32Mi

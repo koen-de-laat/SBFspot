@@ -55,7 +55,7 @@ spec:
             - name: DB_ROOT_USER
               value: root
           resources:
-            {{- toYaml .Values.resources | nindent 12 }}
+            {{- toYaml .Values.collector.resources | nindent 12 }}
           volumeMounts:
             - mountPath: /etc/sbfspot
               name: config
@@ -87,7 +87,7 @@ spec:
             - name: FINQ
               value: {{ .Values.collector.finq | default false | ternary 1 0 | quote }}
           resources:
-            {{- toYaml .Values.resources | nindent 12 }}
+            {{- toYaml .Values.collector.resources | nindent 12 }}
           volumeMounts:
             - mountPath: /etc/sbfspot
               name: config

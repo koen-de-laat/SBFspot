@@ -32,8 +32,6 @@ securityContext:
    drop:
    - ALL
 
-resources: {}
-
 nodeSelector: {}
 
 tolerations: []
@@ -63,9 +61,11 @@ collector:
   latitude: ""
   longitude: ""
   customDB: {}
+  resources: {}
 uploader:
   enabled: true
   pvoutput:
     serialMapping: {}
 #      SerialNmbrInverter_1: PVoutput_System_ID_1
     apiKey: "myApiKey"
+  resources: {}
