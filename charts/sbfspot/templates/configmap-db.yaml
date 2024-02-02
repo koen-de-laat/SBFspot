@@ -1,0 +1,8 @@
+{{- if .Values.collector.customDB }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "sbfspot.fullname" . }}-db-scripts
+data:
+{{- .Values.collector.customDB | toYaml | nindent 2}}
+{{- end }}

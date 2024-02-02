@@ -1,0 +1,10 @@
+apiVersion: v2
+name: sbfspot
+version: 0.1.0
+appVersion: latest
+
+dependencies:
+  - name: mysql
+    version: 9.16.2
+    repository: https://charts.bitnami.com/bitnami
+    condition: mysql.enabled

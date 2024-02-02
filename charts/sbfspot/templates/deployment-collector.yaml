@@ -1,0 +1,124 @@
+{{- if .Values.collector.enabled }}
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "sbfspot.fullname" . }}-collector
+  labels:
+    {{- include "sbfspot.labels" . | nindent 4 }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app.kubernetes.io/component: collector
+      {{- include "sbfspot.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      annotations:
+        checksum/scripts: {{ include (print $.Template.BasePath "/configmap-scripts.yaml") . | sha256sum }}
+        checksum/scripts-db: {{ include (print $.Template.BasePath "/configmap-db.yaml") . | sha256sum }}
+        checksum/config: {{ include (print $.Template.BasePath "/config-secret.yaml") . | sha256sum }}
+        {{- with .Values.podAnnotations }}
+        {{- toYaml . | nindent 8 }}
+        {{ end }}
+      labels:
+        app.kubernetes.io/component: collector
+        {{- include "sbfspot.selectorLabels" . | nindent 8 }}
+    spec:
+      {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      serviceAccountName: {{ include "sbfspot.serviceAccountName" . }}
+      securityContext:
+        {{- toYaml .Values.podSecurityContext | nindent 8 }}
+
+      initContainers:
+        - name: init-db
+          securityContext:
+            {{- toYaml .Values.securityContext | nindent 12 }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          command:
+            - /scripts/setup-db.sh
+          env:
+            - name: DB_STORAGE
+              value: mysql
+            - name: INIT_DB
+              value: "1"
+            - name: DB_ROOT_PW
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "common.names.fullname" (dict "Values" .Values.mysql "Chart" (dict "Name" "mysql") "Release" .Release ) }}
+                  key: mysql-root-password
+            - name: DB_ROOT_USER
+              value: root
+          resources:
+            {{- toYaml .Values.collector.resources | nindent 12 }}
+          volumeMounts:
+            - mountPath: /etc/sbfspot
+              name: config
+            - mountPath: /scripts
+              name: scripts
+            - mountPath: /var/sbfspot
+              name: data
+            {{- if .Values.collector.customDB }}
+            - mountPath: /usr/local/bin/sbfspot.3
+              name: db-scripts
+            {{- end }}
+      containers:
+        - name: collector
+          securityContext:
+            {{- toYaml .Values.securityContext | nindent 12 }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          command:
+            - /scripts/start.sh
+          env:
+            - name: DB_STORAGE
+              value: mysql
+            - name: ENABLE_SBFSPOT
+              value: "1"
+            - name: SBFSPOT_INTERVAL
+              value: {{ .Values.collector.interval | quote }}
+            - name: TZ
+              value: {{ .Values.timezone }}
+            - name: FINQ
+              value: {{ .Values.collector.finq | default false | ternary 1 0 | quote }}
+          resources:
+            {{- toYaml .Values.collector.resources | nindent 12 }}
+          volumeMounts:
+            - mountPath: /etc/sbfspot
+              name: config
+            - mountPath: /scripts
+              name: scripts
+            - mountPath: /var/sbfspot
+              name: data
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      volumes:
+        - name: config
+          secret:
+            secretName: {{ include "sbfspot.fullname" . }}-config
+        - name: scripts
+          configMap:
+            name: {{ include "sbfspot.fullname" . }}-scripts
+            defaultMode: 0550
+        - name: data
+          persistentVolumeClaim:
+            claimName: {{ include "sbfspot.fullname" . }}-data
+        - name: db-scripts
+          configMap:
+            name: {{ include "sbfspot.fullname" . }}-db-scripts
+{{- end }}
