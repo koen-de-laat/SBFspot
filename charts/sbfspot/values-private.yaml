@@ -3,10 +3,10 @@ mysql:
   primary:
     resources:
       requests:
-        cpu: 100m
+        cpu: 500m
         memory: 512Mi
       limits:
-        cpu: 100m
+        cpu: 500m
         memory: 1024Mi
 
 timezone: Europe/Amsterdam
