@@ -1,31 +1,31 @@
 mysql:
     auth:
-        rootPassword: ENC[AES256_GCM,data:Nr0njK3hQ6Lh8VhKIiVzk632ArA0,iv:hkCTSPc9XA9KZQcKI4mUj3vV7x/x6siYb9cRH8+B7ME=,tag:ssnBKhekTzUMsjCnaRACgg==,type:str]
+        rootPassword: ENC[AES256_GCM,data:1Qi9Iy6w68rwRvBzShBXw90FjquF,iv:kdVOzTHS//9s6g1sugAFsTrUxfR4b5s4vOpBY1lSjCY=,tag:+fT9Gw+dBjc2MDA5MFSYPg==,type:str]
 collector:
     ipAdresses:
-        - ENC[AES256_GCM,data:JjR4fNyxP5HmFHLz/wI=,iv:t/l8B4ijHscqYhOaBpe7/bS+LSQhHDkuV5KudKs9mBI=,tag:xY9hHXIoZAdh/jU0ALrqDQ==,type:str]
-        - ENC[AES256_GCM,data:8UXfWTjKUg1nKzAvQAE=,iv:Xu8GRbvsUEbAVD/tKzuZAPL50M30HQ/c7CHzbGNtyBk=,tag:fpGxpCqlb6ziTHY6ccuf6g==,type:str]
-    password: ENC[AES256_GCM,data:ClP0Vw==,iv:ASkP/zhVKRZ9KDU7qodCgUk1jfEresamSjgkq0HkPGw=,tag:plldy1G0+fwIvqYntQIVMQ==,type:str]
-    latitude: ENC[AES256_GCM,data:8+WqjKHH,iv:8shc9T0JTkyeu2UVprp5ryz2Az2Yh63iVnkr5q6urRk=,tag:Toa6Sbglp8tIrReIlm52tA==,type:str]
-    longitude: ENC[AES256_GCM,data:5k4YwDE=,iv:48+1xoLGtpJK0CVA4maFsd/tPm4BXeOZBgflWZ2XSX0=,tag:cwwEmf3Gm1r40TV3HqGkUw==,type:str]
+        - ENC[AES256_GCM,data:vm/c9bmkmA/7/q0z,iv:v+2PQusccJoT7Wvj7+rMAgxuY+VCnBuACL7rTJclhGg=,tag:W4ZE5cTNzloVkgNbxwf01g==,type:str]
+        - ENC[AES256_GCM,data:owtUNhUGyMHJ32ht,iv:CwfWJya5Da7lz++DMascCyitC0YdThbk8ivM01lHkf8=,tag:6W5r90e21LT6To0kIliS0Q==,type:str]
+    password: ENC[AES256_GCM,data:Edtw4Q==,iv:oGnFJjHrrDDEBlSqveeNYqMkynKyKJtSd/jzcE84v+8=,tag:5NsnXkFdgfjIdPPeq/3Qzg==,type:str]
+    latitude: ENC[AES256_GCM,data:nC80Ipjh,iv:1JKEchj15tfiTenH+y4qd6pXzaDiBJzJT4w1z2ndb1I=,tag:OsRQDt9QQ/SGBQr95voNlw==,type:str]
+    longitude: ENC[AES256_GCM,data:Z4OkfCk=,iv:3pAqCxDGyPrScs2a75tXX550j1HA5WW5T+E5XYSBWa4=,tag:Ud7aiOcbNRihi1zYoh3QZQ==,type:str]
 uploader:
     pvoutput:
         serialMapping:
-            "3002967671": ENC[AES256_GCM,data:frYH7Gk=,iv:+vEdNoXgpdvhZVlcIIkbYgYlXpHR+4coBGwBww0An2Y=,tag:czCZcwe70OoSn6Ev4jccPw==,type:str]
-            "1992088839": ENC[AES256_GCM,data:VImVhZE=,iv:tHDxCskXb/8mzrwOhdHNr9nMoUNCjZmu2QM1Bz3zXvI=,tag:2gX0V4WzI1EYTQVmIVGhaA==,type:str]
-        apiKey: ENC[AES256_GCM,data:pdXofp5EGvgZgPlLmJUosWMHBeNBPulfh9AsuYtU3FeAptz49fRmPA==,iv:e6Rux0ri/m2QXDxRa0C1zhEBxgibbXhaAJ/iFZhKJco=,tag:LnpAKHXvzrka64n6RUw+aA==,type:str]
+            "3002967671": ENC[AES256_GCM,data:DHzD3Ts=,iv:8SQddhVxjtpyYQXp0otp/Qjx6e7RaeAv+t24spZS8VM=,tag:3x2SESGCGEP+Yeb8yq7uDw==,type:str]
+            "1992088839": ENC[AES256_GCM,data:LSmujn8=,iv:m8x7j76vDmLZ4L+8fD9m18LAymFiPB72IkaiaKpr1+0=,tag:N7QMHtbG1/IXyKqylj+/IA==,type:str]
+        apiKey: ENC[AES256_GCM,data:QZtjL2BoisNvsDs7pWGZvQ+MBuhbcA7axJYRok66yyhhx70e7FfT0A==,iv:Uxc48bqec+ixxs43mmq0QUswSk0Q5FxQuV/wNKVPsvs=,tag:sLp2AHXqQ6LKgYCJtaWntg==,type:str]
 sops:
     kms:
         - arn: arn:aws:kms:eu-west-1:306752674640:alias/sops
-          created_at: "2024-01-15T22:04:00Z"
-          enc: AQICAHhkO3xoqympV9vRgRfrvPMnC1zNHQHkfwqPxwJnOBPkigEHE9h8ydee3+Zk/c+gwZ6AAAAAfjB8BgkqhkiG9w0BBwagbzBtAgEAMGgGCSqGSIb3DQEHATAeBglghkgBZQMEAS4wEQQMfB0W/6IHU057i+CaAgEQgDvZ/wYUFdGHp7mjy9UKHuVWru9WJ7AX80hQ8MKU7KihatLc9ulD9ZO1rlLfOHvk5I5gtDj7D8339yU1Uw==
+          created_at: "2026-02-12T12:54:40Z"
+          enc: AQICAHhkO3xoqympV9vRgRfrvPMnC1zNHQHkfwqPxwJnOBPkigF4BgSfovpC+eoXqqx5hbTFAAAAfjB8BgkqhkiG9w0BBwagbzBtAgEAMGgGCSqGSIb3DQEHATAeBglghkgBZQMEAS4wEQQMPrYjaXkI1eymYV2jAgEQgDtruWfpKG+qV6Syoklq4oRlyWGDE2NAXaSsAuK7h2w9gw/sJs/ncnnZXemJuyi3tuKPtdJBaT1E2Ml+hg==
           aws_profile: ""
     gcp_kms: []
     azure_kv: []
     hc_vault: []
     age: []
-    lastmodified: "2024-01-15T22:04:00Z"
-    mac: ENC[AES256_GCM,data:iZ9D5VHfSXg9p4GwhmmIgDomhpA/+MMOgpMf2QP+f9k07OzbTXSg56QLkkQdB+jMqaSV68idlUFeg7n8Ya/buR4i3f4uz24v6I1gIZjDROSpy3trPXYSts6MOUx2A8xSSSO5Thva49BYTtGgHA9Og3lEzkoDXqG1M0RFYmo/W0E=,iv:gTJpJRHa4sRGYa5cPgkzs4FtdZRoGmnCI9m6zt/tz1Y=,tag:kjyHHhVyVwXzv61OsJI7+Q==,type:str]
+    lastmodified: "2026-02-12T12:54:40Z"
+    mac: ENC[AES256_GCM,data:4Z1hexJXa9g6izqi33F/0ZOVJSzsCC433GYUlYElSMef0a7zHVZ4T8Jmt+h6eWBYHRr5ZA93fmJ8VfClB9dEjf/EcuJbY4uacsAP8TmBzZSfuyiXt1IBBJ9GS9iqkWT8YtImT0NPIGHcf42W8GXBo9oSEXoHwAQptnWArwYX3sc=,iv:v+iyriIdF/wMALCta3BGNUXLkxIyU3IJVzaWHDiqmMs=,tag:iaegD0yRZl430q5FsIzArQ==,type:str]
     pgp: []
     unencrypted_suffix: _unencrypted
-    version: 3.7.3
+    version: 3.8.1
